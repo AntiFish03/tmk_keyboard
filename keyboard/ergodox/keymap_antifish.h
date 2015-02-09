@@ -10,7 +10,7 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
      * | Tab    |   Q  |   W  |   E  |   R  |   T  |  [   |           |   ]  |   Y  |   U  |   I  |   O  |   P  |        |
      * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
-     * | Shf/~  |   A  |   S  |   D  |   F  |   G  |------|           |------|   H  |   J  |   K  |   L  |   ;  | Shf/Ent|
+     * | Shf/~  | FN17 |   S  |   D  |   F  |   G  |------|           |------|   H  |   J  |   K  |   L  |   ;  | Shf/Ent|
      * |--------+------+------+------+------+------|  '   |           |   \  |------+------+------+------+------+--------|
      * |        |   Z  |   X  |   C  |   V  |   B  |      |           |      |   N  |   M  |   ,  |   .  |   /  | RtCtrl |
      * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
@@ -20,9 +20,9 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      *                                        ,-------------.       ,-------------.
      *                                        | Home | PgUp |       | PgDn | End  |
      *                                 ,------|------|------|       |------+------+------.
-     *                                 |      |      |  M1  |       |  M3  |      |      |
+     *                                 |      |      |      |       |      |      |      |
      *                                 | Space|  Del |------|       |------| Enter| Bksp |
-     *                                 |      |      |  M2  |       |  M4  |      |      |
+     *                                 |      |      |      |       |      |      |      |
      *                                 | LGui |      |      |       |      |      | RGui |
      *                                 `--------------------'       `--------------------'
      *
@@ -34,12 +34,12 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      // left hand
            ESC,   1,   2,   3,   4,   5,MINS,
            TAB,   Q,   W,   E,   R,   T,LBRC,
-           FN1,   A,   S,   D,   F,   G,
-           FN1,   Z,   X,   C,   V,   B,QUOT,
-           NO, FN6,LALT,LGUI, FN5,
+           FN1,FN17,   S,   D,   F,   G,
+            NO,   Z,   X,   C,   V,   B,QUOT,
+            NO, FN6,LALT,LGUI, FN5,
                                         HOME,PGUP,
-                                              FN8,
-                                    FN2, DEL,FN10,
+                                               NO,
+                                    FN2, DEL,  NO,
              // right hand
                 EQL,   6,   7,   8,   9,   0,  BSPC,
                RBRC,   Y,   U,   I,   O,   P,  NO,
@@ -47,8 +47,8 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                BSLS,   N,   M,COMM, DOT,SLSH,RCTL,
                            NO,LEFT,  UP,DOWN,RGHT,
           PGDN, END,
-           FN9,
-          FN11, ENT, FN4
+            NO,
+            NO, ENT, FN4
      ),
 
      /* Keymap: Layer 1 (Media + Func keys) in QWERTY
@@ -58,18 +58,18 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
      * |   F7   |  F8  |  F9  |  F10 |  F11 |  F12 |      |           | Vol+ |      |      |      |      |      |        |
      * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
-     * |        |      |      |      |      |      |------|           |------|      |      |      |      |      |        |
+     * |  TRNS  |      |      |      |      |      |------|           |------|      |      |      |      |      |  TRNS  |
      * |--------+------+------+------+------+------|      |           | Vol- |------+------+------+------+------+--------|
      * |  PWR   | SLEEP|      |      |      |      |      |           |      |      |      |  UP  |      |      |        |
      * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
-     *   |      |      |      |      |      |                                       | LEFT | DOWN | RGHT |      |      |
+     *   |      |      | TRNS | TRNS | TRNS |                                       | LEFT | DOWN | RGHT |      |      |
      *   |      |      |      |      |      |                                       |      |      |      |      |      |
      *   `----------------------------------'                                       `----------------------------------'
      *                                        ,-------------.       ,-------------.
      *                                        |      |      |       |      |      |
      *                                 ,------|------|------|       |------+------+------.
      *                                 |      |      |      |       |      |      |      |
-     *                                 |      |      |------|       |------|      |      |
+     *                                 | TRNS |      |------|       |------|      |      |
      *                                 |      |      |      |       |      |      |      |
      *                                 |      |      |      |       |      |      |      |
      *                                 `--------------------'       `--------------------'
@@ -84,10 +84,10 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
             F7,  F8,  F9, F10, F11, F12,  NO,
           TRNS,  NO,  NO,  NO,  NO,  NO,
            PWR,SLEP,  NO,  NO,  NO,  NO,  NO,
-            NO, NO,   NO,  NO, FN5,
+            NO, NO, TRNS,TRNS,TRNS,
                                           NO,  NO,
                                                NO,
-                                     NO,  NO,  NO,
+                                   TRNS,  NO,  NO,
         // right hand
                MUTE,MPRV,MSTP,MPLY,MNXT,  NO,TRNS,
                VOLU,  NO,  NO,  NO,  NO,  NO,  NO,
@@ -110,7 +110,7 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
      * |        |      |      |      |      |      |      |           |      |      |   1  |   2  |   3  |  ent |        |
      * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
-     *   |      | +L2  |      |      |      |                                       |   0  |   0  |   .  |  ent |      |
+     *   |      | TRNS |      |      |      |                                       |   0  |   0  |   .  |  ent |      |
      *   |      |      |      |      |      |                                       |      |      |      |      |      |
      *   `----------------------------------'                                       `----------------------------------'
      *                                        ,-------------.       ,-------------.
@@ -132,7 +132,7 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
             NO,  NO,  NO,  NO,  NO,  NO,  NO,
             NO,  NO,  NO,  NO,  NO,  NO,
             NO,  NO,  NO,  NO,  NO,  NO,  NO,
-            NO, FN6,  NO,  NO,  NO,
+            NO,TRNS,  NO,  NO,  NO,
                                           NO,  NO,
                                                NO,
                                      NO,  NO,  NO,
@@ -146,7 +146,53 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
             NO,
             NO,  NO,PENT
      ),
+     /* Keymap: Layer 3 Spectacle App Layer
+     *
+     * ,--------------------------------------------------.           ,--------------------------------------------------.
+     * |        |      |      |      |      |      |      |           |      |      |      |      |      |      |        |
+     * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
+     * |        |      |  FN7 |  FN8 |  FN9 | FN16 |      |           |      |      |      |      |      |      |        |
+     * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
+     * |        | TRNS | FN14 | FN15 | FN10 |      |------|           |------|      |      |      |      |      |        |
+     * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
+     * |        |      | FN13 | FN12 | FN11 |      |      |           |      |      |      |      |      |      |        |
+     * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
+     *   |      |      |      |      |      |                                       |      |      |      |      |      |
+     *   |      |      |      |      |      |                                       |      |      |      |      |      |
+     *   `----------------------------------'                                       `----------------------------------'
+     *                                        ,-------------.       ,-------------.
+     *                                        |      |      |       |      |      |
+     *                                 ,------|------|------|       |------+------+------.
+     *                                 |      |      |      |       |      |      |      |
+     *                                 |      |      |------|       |------|      |      |
+     *                                 |      |      |      |       |      |      |      |
+     *                                 |      |      |      |       |      |      |      |
+     *                                 `--------------------'       `--------------------'
+     *
+     *
+     *
+     ****************************************************************************************************/
 
+     KEYMAP(  // Layer3:
+        // left hand
+          NO,  NO,  NO,  NO,  NO,  NO,  NO,
+          NO,  NO, FN7, FN8, FN9,FN16,  NO,
+          NO,TRNS,FN14,FN15,FN10,  NO,
+          NO,  NO,FN13,FN12,FN11,  NO,  NO,
+          NO,  NO,  NO,  NO,  NO,
+                                        NO,  NO,
+                                             NO,
+                                   NO,  NO,  NO,
+        // right hand
+               NO,  NO,  NO,  NO,  NO,  NO,  NO,
+               NO,  NO,  NO,  NO,  NO,  NO,  NO,
+                    NO,  NO,  NO,  NO,  NO,  NO,
+               NO,  NO,  NO,  NO,  NO,  NO,  NO,
+                         NO,  NO,  NO,  NO,  NO,
+          NO,  NO,
+          NO,
+          NO,  NO,  NO
+    )
 
 
 /*
@@ -192,6 +238,27 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         TRNS,
         TRNS,TRNS,TRNS
     ),
+
+    KEYMAP(  // LayerN: fully OFF
+        // left hand
+          NO,  NO,  NO,  NO,  NO,  NO,  NO,
+          NO,  NO,  NO,  NO,  NO,  NO,  NO,
+          NO,  NO,  NO,  NO,  NO,  NO,
+          NO,  NO,  NO,  NO,  NO,  NO,  NO,
+          NO,  NO,  NO,  NO,  NO,
+                                        NO,  NO,
+                                             NO,
+                                   NO,  NO,  NO,
+        // right hand
+               NO,  NO,  NO,  NO,  NO,  NO,  NO,
+               NO,  NO,  NO,  NO,  NO,  NO,  NO,
+                    NO,  NO,  NO,  NO,  NO,  NO,
+               NO,  NO,  NO,  NO,  NO,  NO,  NO,
+                         NO,  NO,  NO,  NO,  NO,
+          NO,  NO,
+          NO,
+          NO,  NO,  NO
+    )
 */
 
 };
@@ -202,10 +269,16 @@ enum function_id {
 };
 
 enum macro_id {
-     TOP_LEFT,
-     TOP_RGHT,
-     BTM_LEFT,
-     BTM_RGHT
+     SPEC_TOP_LEFT,
+     SPEC_TOP,
+     SPEC_TOP_RGHT,
+     SPEC_RGHT,
+     SPEC_BTM_RGHT,
+     SPEC_BTM,
+     SPEC_BTM_LEFT,
+     SPEC_LEFT,
+     SPEC_FULL,
+     SPEC_CENTER
 };
 
 /*
@@ -214,26 +287,57 @@ enum macro_id {
 const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt)
 {
      switch (id) {
-          case TOP_LEFT:
-               return (record->event.pressed ?
-                    MACRO( D(LGUI), D(LCTL), T(LEFT), END ) :
-                    MACRO( U(LGUI), U(LCTL), END)
-               );
-          case TOP_RGHT:
-               return (record->event.pressed ?
-                    MACRO( D(LGUI), D(LCTL), T(RGHT), END ) :
-                    MACRO( U(LGUI), U(LCTL), END)
-               );
-          case BTM_LEFT:
-               return (record->event.pressed ?
-                    MACRO( D(LGUI), D(LCTL), D(LSFT), T(LEFT), END ) :
-                    MACRO( U(LGUI), U(LCTL), U(LSFT), END)
-               );
-          case BTM_RGHT:
-               return (record->event.pressed ?
-                   MACRO( D(LGUI), D(LCTL), D(LSFT), T(RGHT), END ) :
-                   MACRO( U(LGUI), U(LCTL), U(LSFT), END)
-               );
+          case SPEC_TOP_LEFT:
+            return (record->event.pressed ?
+              MACRO( D(LGUI), D(LCTL), T(LEFT), END ) :
+              MACRO( U(LGUI), U(LCTL), END)
+            );
+          case SPEC_TOP:
+            return (record->event.pressed ?
+              MACRO( D(LGUI), D(LALT), T(UP), END ) :
+              MACRO( U(LGUI), U(LALT), END)
+            );
+          case SPEC_TOP_RGHT:
+            return (record->event.pressed ?
+              MACRO( D(LGUI), D(LCTL), T(RGHT), END ) :
+              MACRO( U(LGUI), U(LCTL), END)
+            );
+          case SPEC_RGHT:
+            return (record->event.pressed ?
+              MACRO( D(LGUI), D(LSFT), D(LALT), T(RGHT), END ) :
+              MACRO( U(LGUI), U(LSFT), U(LALT), END)
+            );
+          case SPEC_BTM_RGHT:
+            return (record->event.pressed ?
+              MACRO( D(LGUI), D(LCTL), D(LSFT), T(RGHT), END ) :
+              MACRO( U(LGUI), U(LCTL), U(LSFT), END)
+            );
+          case SPEC_BTM:
+            return (record->event.pressed ?
+              MACRO( D(LGUI), D(LALT), T(UP), END ) :
+              MACRO( U(LGUI), U(LALT), END )
+            );
+          case SPEC_BTM_LEFT:
+            return (record->event.pressed ?
+              MACRO( D(LGUI), D(LCTL), D(LSFT), T(LEFT), END ) :
+              MACRO( U(LGUI), U(LCTL), U(LSFT), END)
+            );
+
+          case SPEC_LEFT:
+            return (record->event.pressed ?
+              MACRO( D(LGUI), D(LSFT), D(LALT), T(LEFT), END ) :
+              MACRO( U(LGUI), U(LSFT), U(LALT), END)
+            );
+          case SPEC_CENTER:
+            return (record->event.pressed ?
+              MACRO( D(LGUI), D(LALT), T(C), END ) :
+              MACRO( U(LGUI), U(LALT), END)
+            );
+          case SPEC_FULL:
+            return (record->event.pressed ?
+              MACRO( D(LGUI), D(LALT), T(F), END ) :
+              MACRO( U(LGUI), U(LALT), END)
+            );
     }
     return MACRO_NONE;
 }
@@ -250,12 +354,18 @@ static const uint16_t PROGMEM fn_actions[] = {
 
      ACTION_LAYER_MOMENTARY(1),                         // FN5 - toggle Layer1
      ACTION_LAYER_TOGGLE(2),                            // FN6 - toggle Layer2
-     ACTION_LAYER_TAP_KEY(1, ON_BOTH),                  // FN7
 
-     ACTION_MACRO(TOP_LEFT),                            // FN8
-     ACTION_MACRO(TOP_RGHT),                            // FN9
-     ACTION_MACRO(BTM_LEFT),                            // FN10
-     ACTION_MACRO(BTM_RGHT)                             // FN11
+     ACTION_MACRO(SPEC_TOP_LEFT),                       // FN7
+     ACTION_MACRO(SPEC_TOP),                            // FN8
+     ACTION_MACRO(SPEC_TOP_RGHT),                       // FN9
+     ACTION_MACRO(SPEC_RGHT),                           // FN10
+     ACTION_MACRO(SPEC_BTM_RGHT),                       // FN11
+     ACTION_MACRO(SPEC_BTM),                            // FN12
+     ACTION_MACRO(SPEC_BTM_LEFT),                       // FN13
+     ACTION_MACRO(SPEC_LEFT),                           // FN14
+     ACTION_MACRO(SPEC_CENTER),                         // FN15
+     ACTION_MACRO(SPEC_FULL),                           // FN16
+     ACTION_LAYER_TAP_KEY(3, KC_A)                      // FN17
 
 };
 
