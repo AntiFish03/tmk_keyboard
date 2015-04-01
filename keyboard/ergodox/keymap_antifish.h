@@ -10,7 +10,7 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
      * | Tab    |   Q  |   W  |   E  |   R  |   T  |  [   |           |   ]  |   Y  |   U  |   I  |   O  |   P  |        |
      * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
-     * | Shf/~  | FN17 |   S  |   D  |   F  |   G  |------|           |------|   H  |   J  |   K  |   L  |   ;  | Shf/Ent|
+     * | Shf/~  | FN19 |   S  |   D  |   F  |   G  |------|           |------|   H  |   J  |   K  |   L  |   ;  | Shf/Ent|
      * |--------+------+------+------+------+------|  '   |           |   \  |------+------+------+------+------+--------|
      * |        |   Z  |   X  |   C  |   V  |   B  |      |           |      |   N  |   M  |   ,  |   .  |   /  | RtCtrl |
      * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
@@ -34,7 +34,7 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      // left hand
            ESC,   1,   2,   3,   4,   5,MINS,
            TAB,   Q,   W,   E,   R,   T,LBRC,
-           FN1,FN17,   S,   D,   F,   G,
+           FN1,FN19,   S,   D,   F,   G,
             NO,   Z,   X,   C,   V,   B,QUOT,
             NO, FN6,LALT,LGUI, FN5,
                                         HOME,PGUP,
@@ -54,13 +54,13 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      /* Keymap: Layer 1 (Media + Func keys) in QWERTY
      *
      * ,--------------------------------------------------.           ,--------------------------------------------------.
-     * |   F1   |  F2  |  F3  |  F4  |  F5  |  F6  |      |           | Mute | PREV | STOP | PLAY | NEXT |      |        |
+     * |   F1   |  F2  |  F3  |  F4  |  F5  |  F6  |      |           | Mute | PREV | STOP | PLAY | NEXT |      |  TRNS  |
      * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
      * |   F7   |  F8  |  F9  |  F10 |  F11 |  F12 |      |           | Vol+ |      |      |      |      |      |        |
      * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
      * |  TRNS  |      |      |      |      |      |------|           |------|      |      |      |      |      |  TRNS  |
      * |--------+------+------+------+------+------|      |           | Vol- |------+------+------+------+------+--------|
-     * |  PWR   | SLEEP|      |      |      |      |      |           |      |      |      |  UP  |      |      |        |
+     * |        |      |      |      |      |      |      |           |      |      |      |  UP  |      |      |        |
      * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
      *   |      |      | TRNS | TRNS | TRNS |                                       | LEFT | DOWN | RGHT |      |      |
      *   |      |      |      |      |      |                                       |      |      |      |      |      |
@@ -83,8 +83,8 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
             F1,  F2,  F3,  F4,  F5,  F6,  NO,
             F7,  F8,  F9, F10, F11, F12,  NO,
           TRNS,  NO,  NO,  NO,  NO,  NO,
-           PWR,SLEP,  NO,  NO,  NO,  NO,  NO,
-            NO, NO, TRNS,TRNS,TRNS,
+          TRNS,  NO,  NO,  NO,  NO,  NO,  NO,
+            NO,  NO,TRNS,TRNS,TRNS,
                                           NO,  NO,
                                                NO,
                                    TRNS,  NO,  NO,
@@ -102,7 +102,7 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     /* Keymap: Layer 2 (Keypad) in QWERTY
      *
      * ,--------------------------------------------------.           ,--------------------------------------------------.
-     * |[Teensy]|      |      |      |      |      |      |           |      |      | NUMLK|   =  |   /  |   *  |  BSPC  |
+     * |[Teensy]| PWR  |      |      |      |      |      |           |      |      | NUMLK|   =  |   /  |   *  |  BSPC  |
      * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
      * |        |      |      |      |      |      |      |           |      |      |   7  |   8  |   9  |   -  |        |
      * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
@@ -128,7 +128,7 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
      KEYMAP(  // Layer2:
           // left hand
-           FN0,  NO,  NO,  NO,  NO,  NO,  NO,
+           FN0, PWR,  NO,  NO,  NO,  NO,  NO,
             NO,  NO,  NO,  NO,  NO,  NO,  NO,
             NO,  NO,  NO,  NO,  NO,  NO,
             NO,  NO,  NO,  NO,  NO,  NO,  NO,
@@ -153,9 +153,9 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
      * |        |      |  FN7 |  FN8 |  FN9 | FN16 |      |           |      |      |      |      |      |      |        |
      * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
-     * |        | TRNS | FN14 | FN15 | FN10 |      |------|           |------|      |      |      |      |      |        |
+     * |        | TRNS | FN14 | FN15 | FN10 | FN17 |------|           |------|      |      |      |      |      |        |
      * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
-     * |        |      | FN13 | FN12 | FN11 |      |      |           |      |      |      |      |      |      |        |
+     * |        |      | FN13 | FN12 | FN11 | FN18 |      |           |      |      |      |      |      |      |        |
      * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
      *   |      |      |      |      |      |                                       |      |      |      |      |      |
      *   |      |      |      |      |      |                                       |      |      |      |      |      |
@@ -177,8 +177,8 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         // left hand
           NO,  NO,  NO,  NO,  NO,  NO,  NO,
           NO,  NO, FN7, FN8, FN9,FN16,  NO,
-          NO,TRNS,FN14,FN15,FN10,  NO,
-          NO,  NO,FN13,FN12,FN11,  NO,  NO,
+          NO,TRNS,FN14,FN15,FN10,FN17,
+          NO,  NO,FN13,FN12,FN11,FN18,  NO,
           NO,  NO,  NO,  NO,  NO,
                                         NO,  NO,
                                              NO,
@@ -278,7 +278,9 @@ enum macro_id {
      SPEC_BTM_LEFT,
      SPEC_LEFT,
      SPEC_FULL,
-     SPEC_CENTER
+     SPEC_CENTER,
+     SPEC_SMALLER,
+     SPEC_LARGER
 };
 
 /*
@@ -314,7 +316,7 @@ const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt)
             );
           case SPEC_BTM:
             return (record->event.pressed ?
-              MACRO( D(LGUI), D(LALT), T(UP), END ) :
+              MACRO( D(LGUI), D(LALT), T(DOWN), END ) :
               MACRO( U(LGUI), U(LALT), END )
             );
           case SPEC_BTM_LEFT:
@@ -330,13 +332,25 @@ const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt)
             );
           case SPEC_CENTER:
             return (record->event.pressed ?
-              MACRO( D(LGUI), D(LALT), T(C), END ) :
-              MACRO( U(LGUI), U(LALT), END)
+              MACRO( D(LGUI), D(LSFT), D(LALT), T(C), END ) :
+              MACRO( U(LGUI), U(LSFT), U(LALT), END)
             );
           case SPEC_FULL:
             return (record->event.pressed ?
-              MACRO( D(LGUI), D(LALT), T(F), END ) :
-              MACRO( U(LGUI), U(LALT), END)
+              MACRO( D(LGUI), D(LSFT), D(LALT), T(F), END ) :
+              MACRO( U(LGUI), U(LSFT), U(LALT), END)
+            );
+
+          case SPEC_SMALLER:
+            return (record->event.pressed ?
+              MACRO( D(LCTL), D(LSFT), D(LALT), T(LEFT), END ) :
+              MACRO( U(LCTL), U(LSFT), U(LALT), END)
+            );
+
+          case SPEC_LARGER:
+            return (record->event.pressed ?
+              MACRO( D(LCTL), D(LSFT), D(LALT), T(RGHT), END ) :
+              MACRO( U(LCTL), U(LSFT), U(LALT), END)
             );
     }
     return MACRO_NONE;
@@ -365,7 +379,11 @@ static const uint16_t PROGMEM fn_actions[] = {
      ACTION_MACRO(SPEC_LEFT),                           // FN14
      ACTION_MACRO(SPEC_CENTER),                         // FN15
      ACTION_MACRO(SPEC_FULL),                           // FN16
-     ACTION_LAYER_TAP_KEY(3, KC_A)                      // FN17
+     ACTION_MACRO(SPEC_LARGER),                         // FN17
+     ACTION_MACRO(SPEC_SMALLER),                        // FN18
+
+     ACTION_LAYER_TAP_KEY(3, KC_A)                      // FN19
+
 
 };
 
